@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+	  <meta charset="UTF-8">
+	  <title>Ambient TV</title>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="style.css">
+	  <!-- <link rel="stylesheet" href="libraries/jquery.youtubebackground_style.css"></script> -->
+	  <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
+	  <script src="libraries/jquery.tubular.1.0.js"></script>
+	</head>
+
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+	<script>
+		// Wait for window load
+		$(window).load(function() {
+	            // Animate loader off screen
+		    $(".se-pre-con").fadeOut("slow");;
+		});
+	</script> -->
+
+	<body>
+		<script src="home.js"></script>
+
+	  	<div id="tubularBG">
+			<div id="songPlayer" style="position: relative; z-index: -9999999; opacity: 0.00001">
+			</div>
+			<div id="titles">
+				<p id="songName"></p>
+			</div>
+			<img id="logo" src="logo.png"></img>
+			<input id="next" type="button" value="change song"></input>
+		</div>
+	</body>
+</html>

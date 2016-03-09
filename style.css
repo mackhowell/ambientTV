@@ -6,10 +6,21 @@ html, body {
 
 p {
 	color: white !important;
+	font-size: 28px;
+}
+
+#songPlayer {
+	display: none;
 }
 
 #next {
-	display: none;
+	/*display: none;*/
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 100000;
+	color: white;
+	text-shadow: 1-x black solid;
 }
 
 #titles{

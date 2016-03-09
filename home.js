@@ -21,7 +21,7 @@ $(document).ready(function () {
 	selectBackground(randomElement);
 	document.getElementById("videoName").innerText = randomElement;
 
-	// already loaded by tubular
+	// taken care of by tubular
 	// var tag = document.createElement('script');
 	// tag.src = "https://www.youtube.com/iframe_api";
 	// var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -63,12 +63,6 @@ window.onSongPlayerError = function(error) {
 }
 
 function onSongPlayerReady(event) {
-	console.log("inside player ready");
-	loadPlaylist();
-}
-
-function loadPlaylist() {
-	console.log("inside load playlist");
 	songPlayer.cuePlaylist({
 		'listType': 'playlist',
 		'list': 'PLhfx68zwRR47NmfZcKG7WqnY_qSXBw2Kj',
@@ -99,17 +93,24 @@ function next() {
 
 function onSongPlayerStateChange(event) {
 	if (event.data == YT.PlayerState.CUED) {
-		console.log("inside cued state");
+		console.log("cued state");
 		numVideos = event.target.getPlaylist().length;
 		event.target.playVideo();
-		document.getElementById("songName").innerText = player.getVideoData().title;
+
+		// console.log("document.getElementById = " + document.getElementById("songName").textContent);
+
+		document.getElementById("songName").textContent = event.target.getVideoData().title;
+		document.getElementById("videoName").textContent = player.getVideoData().title;
+
+		console.log("song == " + event.target.getVideoData().title);
+		console.log("vid == " + player.getVideoData().title);
 	} else if (event.data == YT.PlayerState.ENDED) {
-		console.log("inside player ended state");
+		console.log("player ended state");
 		next();
 	} else if (event.data == YT.PlayerState.UNSTARTED) {
 		unstartedErrorCount++;
 		if (unstartedErrorCount == 3) {
-			console.log("inside unplayable track state");
+			console.log("unplayable track state");
 			setTimeout(next(), 1000);
 		}
 	}
@@ -117,5 +118,9 @@ function onSongPlayerStateChange(event) {
 
 function selectBackground(randomElement) {
 	console.log("inside selectBackground...random bg = " + randomElement);
-	$('#tubularBG').tubular({videoId: randomElement});
+	$('#tubularBG').tubular({
+		videoId: randomElement,
+		mute: true,
+		repeat: true,
+	});
 }
